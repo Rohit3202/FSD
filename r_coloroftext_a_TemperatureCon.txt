@@ -1,0 +1,75 @@
+Q.1 Create a React app that changes the color of a text randomly when a button is clicked. 
+
+
+npx create-react-app change-text-color
+cd change-text-color
+npm start
+Code:
+App.js:
+import {useState} from "react";
+export default function App () {
+const [color, setColor] = useState("black");
+return (
+  <div style= {{textAlign: "center", marginTop: "50px”}} >
+  <h2 style={{color}} >Hello! </h2>
+  <button onClick= {() => setColor ("#" + Math.floor(Math.random() * 16777215). toString(16))}>
+        Change Color
+      </button>
+    </div>
+  );
+}
+
+Q.2 Develop a Temperature Converter app to convert Celsius and Fahrenheit values in Angular.
+
+ng new temperature-converter
+cd temperature-converter
+ng serve
+
+
+
+app.component.ts:
+
+
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  celsius = 0;
+  fahrenheit = 32;
+  toFahrenheit() {
+    this.fahrenheit = (this.celsius * 9) / 5 + 32;
+  }
+  toCelsius() {
+    this.celsius = ((this.fahrenheit - 32) * 5) / 9;
+  }
+}
+
+
+
+app.component.html
+
+
+
+<h2>Temperature Converter</h2>
+<div style="text-align:center; margin-top:30px;">
+  <p>
+  Celsius:
+  <input type="number" [(ngModel)]="celsius" (input)="toFahrenheit()" />
+  </p>
+  <p>Fahrenheit: {{ fahrenheit }}</p>
+  <hr />
+  <p>
+   Fahrenheit:
+  <input type="number" [(ngModel)]="fahrenheit" (input)="toCelsius()" />
+  </p>
+  <p>Celsius: {{ celsius }}</p>
+</div>

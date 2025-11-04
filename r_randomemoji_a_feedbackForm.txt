@@ -1,0 +1,94 @@
+1.Design a React component that displays a random emoji each time a button is clicked.
+
+npx create-react-app emoji
+cd emoji
+npm start
+
+
+App.js
+
+
+
+import React, { useState } from 'react';
+function App() {
+  const emojis = ['😀', '😂', '😍', '😎', '😢', '😡', '🤩', '🥳'];
+  const [emoji, setEmoji] = useState('😀');
+  function changeEmoji() {
+    const random = Math.floor(Math.random() * emojis.length);
+    setEmoji(emojis[random]);
+  }
+  return (
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1 style={{ fontSize: '80px' }}>{emoji}</h1>
+      <button onClick={changeEmoji}>Show Random Emoji</button>
+    </div>
+  );
+}
+export default App;
+
+
+
+2.Develop a Feedback Form with star rating and comments in Angular.
+
+
+ng new feedback
+cd feedback
+ng serve
+
+
+#Click where you want to insert emoji or symbols.
+Press Ctrl + . → The emoji picker window will appear.(for star symbol in ubntu) and for window press window+.
+
+
+
+app.html:
+
+
+
+
+<h2> Simple Feedback Form </h2>
+<div *ngIf="!submitted">
+  <p>Rate us:</p>
+  <span *ngFor="let s of [1,2,3,4,5]"
+        (click)="setRating(s)"
+        style="font-size:30px;cursor:pointer;color:gold;">
+    {{ s <= rating ? '★' : '☆' }}
+  </span>
+  <br><br>
+  <textarea [(ngModel)]="comment" placeholder="Write your feedback" rows="3" cols="35"></textarea>
+  <br><br>
+  <button (click)="submit()">Submit</button>
+</div>
+<div *ngIf="submitted">
+  <h3>Thank you!</h3>
+  <p><b>Rating:</b> {{ rating }} stars</p>
+  <p><b>Comment:</b> {{ comment }}</p>
+</div>
+
+
+
+
+app.ts:
+
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+@Component({
+  imports:[CommonModule,FormsModule],
+  selector: 'app-root',
+  templateUrl: './app.html'
+})
+export class App {
+  rating = 0;
+  comment = '';
+  submitted = false;
+  setRating(num: number) {
+    this.rating = num;
+  }
+  submit() {
+    this.submitted = true;
+  }
+}

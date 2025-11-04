@@ -1,0 +1,79 @@
+Q.1 Create a React component that displays a hidden message when a button is clicked. 
+
+npx create-react-app hidden-message
+cd hidden-message
+npm start
+ 
+
+App.js
+
+
+import React, { useState } from "react";
+function App() {
+  const [show, setShow] = useState(false);
+  return (
+    <div>
+      <h2>Hidden Message</h2>
+      <button onClick={() => setShow(!show)}>Show / Hide</button>
+      {show && <p>This is a hidden message!</p>}
+    </div>
+  );
+}
+export default App;
+
+
+Q.2 Design an Angular app for student registration with validation for name, email, and mobile number.
+
+app.html
+
+<h2>Student Registration</h2>
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  Name: <input name="name" ngModel><br><br>
+  Email: <input name="email" ngModel><br><br>
+  Mobile: <input name="mobile" ngModel><br><br>
+
+  <button type="submit">Register</button>
+</form>
+
+<p *ngIf="done" style="color:green; font-weight: bold;">
+  Registration Successful!
+</p>
+
+
+app.ts
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './app.html'
+})
+export class App {
+  done = false;
+
+  submit(f: any) {
+    const { name, email, mobile } = f.value;
+
+    if (!name || !email || !mobile) {
+      alert("Please fill all fields!");
+      this.done = false;
+      return;
+    }
+
+    alert(`✅ Registration Successful
+Name: ${name}
+Email: ${email}
+Mobile: ${mobile}`);
+
+    this.done = true;
+  }
+}
+
+
+
+

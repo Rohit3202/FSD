@@ -1,0 +1,75 @@
+Q1.Develop a React app to display a list of items (e.g., fruits, colors, or cities) using an array
+
+npx create-react-app itemlist
+cd itemlist
+npm start
+
+
+App.js
+
+
+import React from "react";
+function App() {
+  const fruits = ["Apple", "Banana", "Mango", "Orange"];
+  return (
+    <div style={{ textAlign: "center", marginTop: "40px" }}>
+      <h2 style={{ color: "green" }}>Fruit List</h2>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {fruits.map((fruit, index) => (
+          <li key={index} style={{ margin: "5px 0" }}>
+            {fruit}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+export default App;
+
+
+Q2.Create a Quote Generator app that displays random quotes with authors in Angular using static data.
+
+
+ng new quote
+cd quote
+ng serve
+
+	
+1)App.component.ts
+
+
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  quotes = [
+    'Believe in yourself!',
+    'Never give up.',
+    'Dream big and work hard.',
+    'Stay positive, work hard, make it happen.',
+    'Do something today that your future self will thank you for.'
+  ];
+  currentQuote = this.quotes[0];
+
+  newQuote() {
+    const index = Math.floor(Math.random() * this.quotes.length);
+    this.currentQuote = this.quotes[index];
+  }
+}
+
+
+
+2)App.component.html 
+
+
+<div style="text-align:center; margin-top:50px;">
+  <h1>  Random Quote Generator</h1>
+  <h2>{{ currentQuote }}</h2>
+  <button (click)="newQuote()">New Quote</button>
+</div>

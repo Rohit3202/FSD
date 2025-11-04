@@ -1,0 +1,78 @@
+Q.1 Create a React app that takes the user’s name as input and displays it below the textbox instantly.
+
+
+npx create-react-app demo
+cd demo
+npm start
+
+
+App.js:
+import React, { useState } from "react";
+function App() {
+  const [name, setName] = useState("");
+  return (
+    <div>
+      <h2>Enter Your Name</h2>
+      <input onChange={(e) => setName(e.target.value)} placeholder="Type here" />
+      <p>Hello, {name}</p>
+    </div>
+  );
+}
+export default App;
+
+
+
+Q.2 Build an Image Gallery app in Angular that displays multiple images and enlarges an image when clicked.
+
+
+
+ng new gallary-app
+cd gallary-app
+ng serve
+
+
+
+(put images in public folder)
+
+
+
+app.html:
+
+
+
+
+<h2>Image Gallery</h2>
+<div>
+  <img *ngFor="let img of images" [src]="img" (click)="select(img)" width="100" style="margin:5px; cursor:pointer;">
+</div>
+<div *ngIf="selected">
+  <h3>Selected Image</h3>
+  <img [src]="selected" width="300">
+</div>
+
+
+
+
+app.ts:
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+@Component({
+  imports:[CommonModule,FormsModule],
+  selector: 'app-root',
+  templateUrl: './app.html'
+})
+export class App {
+  images = [
+    'img1.jpeg',
+    'img2.jpeg',
+    'img3.jpeg'
+  ];
+  selected = '';
+  select(img: string) {
+    this.selected = img;
+  }
+}

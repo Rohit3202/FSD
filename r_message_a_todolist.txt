@@ -1,0 +1,69 @@
+Q.1 Design a React app to display a welcome message like “Hello, User!”.
+
+
+npx create-react-app welcome-msg
+cd welcome-msg
+npm start
+
+
+App.js
+
+
+import React from "react";
+function App() {
+  return <h2>Hello, User!</h2>;
+}
+export default App;
+
+
+
+Q.2 Develop a Todo List app in Angular that allows adding, displaying, and deleting tasks.
+
+
+
+ng new todo-app
+cd todo-app
+ng serve
+
+
+app.html:
+
+
+<h2>Todo List</h2>
+<input [(ngModel)]="task" placeholder="Enter task">
+<button (click)="add()">Add</button>
+<ul>
+  <li *ngFor="let t of tasks; let i = index">
+    {{ t }}
+    <button (click)="del(i)">Delete</button>
+  </li>
+</ul>
+
+
+
+
+app.ts:
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+@Component({
+  imports:[CommonModule,FormsModule],
+  selector: 'app-root',
+  templateUrl: './app.html'
+})
+export class App {
+  task = '';
+  tasks: string[] = [];
+  add() {
+    if (this.task) {
+      this.tasks.push(this.task);
+      this.task = '';
+    }
+  }
+  del(i: number) {
+    this.tasks.splice(i, 1);
+  }
+}

@@ -1,0 +1,81 @@
+1.Implement a Like button in React that increases the like count on each click.
+
+npx create-react-app count-increase-button
+cd count-increase-button
+npm start
+
+
+App.js:
+
+
+
+import React, { useState } from "react";
+function App() {
+  const [likes, setLikes] = useState(0);
+  const handleLike = () => {
+  setLikes(likes + 1);
+  };
+  return (
+    <div>
+      <h2>Like Button</h2>
+      <p>Likes: {likes}</p>
+      <button onClick={handleLike}>Like</button>
+    </div>
+  );
+}
+export default App;
+
+
+
+2.Create a Weather Info app showing temperature and weather conditions for different cities using static data in Angular.
+
+ng new whether-info-app
+cd whether-info-app
+ng serve
+
+
+
+
+app.component.ts
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  title = 'Weather Info App';
+  weatherData = [
+    { city: 'Mumbai', temperature: 32, condition: 'Sunny' },
+    { city: 'Delhi', temperature: 28, condition: 'Cloudy' },
+    { city: 'Bangalore', temperature: 26, condition: 'Rainy' },
+    { city: 'Chennai', temperature: 30, condition: 'Humid' }
+  ];
+}
+
+
+
+app.component.html
+
+
+
+<div style="text-align:center; margin-top:30px;">
+  <h2>{{ title }}</h2>
+  <table border="1" style="margin:auto; border-collapse:collapse; width:60%;">
+    <tr style="background-color:#f0f0f0;">
+      <th>City</th>
+      <th>Temperature (°C)</th>
+      <th>Condition</th>
+    </tr>
+    <tr *ngFor="let weather of weatherData">
+      <td>{{ weather.city }}</td>
+      <td>{{ weather.temperature }}</td>
+      <td>{{ weather.condition }}</td>
+    </tr>
+  </table>
+</div>

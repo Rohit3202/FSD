@@ -1,0 +1,113 @@
+Q1.Write a React program that displays greetings based on the time of day (morning, afternoon,evening)
+
+
+Commands:
+
+npx create-react-app greeting-app
+cd greeting-app
+npm start
+
+
+
+1)App.js
+import React from "react";
+
+function App() {
+  const now = new Date();
+  const hour = now.getHours();
+  const time = now.toLocaleTimeString();
+  let greeting = "";
+
+  if (hour >= 5 && hour < 13) {
+    greeting = "Good Morning!";
+  } else if (hour >= 13 && hour < 18) {
+    greeting = "Good Afternoon!";
+  } else {
+    greeting = "Good Evening!";
+  }
+
+  const style = {
+    textAlign: "center",
+    marginTop: "100px",
+    fontFamily: "Arial",
+    color: "darkblue",
+  };
+
+  return (
+    <div style={style}>
+      <h2>{greeting}</h2>
+      <p>Current Time: {time}</p>
+    </div>
+  );
+}
+export default App;
+
+
+
+
+
+Q2.Develop a Product List app in displaying product name, price, and image using a separate
+component.
+
+
+Commands:
+
+ng new productapp
+cd productapp
+ng generate component prd1
+ng serve
+
+
+1)App.component.ts    (insert imges manually in public folder present there )
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Prd1Component } from './prd1/prd1.component'; //(give the name of component that you create)
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, Prd1Component],
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  products = [
+    { name: 'Laptop', price: '₹50,000', image: '1.png' },
+    { name: 'Phone', price: '₹20,000', image: '2.png' },
+    { name: 'Headphones', price: '₹2,000', image: '3.png' }
+  ];
+}
+
+
+2)App.component.html
+
+
+
+<h2 style="text-align:center;">Product List</h2>
+<div style="display:flex; justify-content:center; flex-wrap:wrap;">
+  <app-prd1 *ngFor="let p of products" [product]="p"></app-prd1>
+</div>
+3)prd1.component.ts
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-prd1',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './prd1.component.html'
+})
+export class Prd1Component {
+  @Input() product: any;
+}
+
+
+4)prd1.component.html
+
+
+
+<div style="border:1px solid gray; padding:10px; margin:10px; width:200px; text-align:center;">
+  <img [src]="product.image" [alt]="product.name" width="150" height="150">
+  <h4>{{ product.name }}</h4>
+  <p>{{ product.price }}</p>
+</div>

@@ -1,0 +1,63 @@
+1) Develop a React app that generates and displays a random number every time a button is Pressed -  (10M)                                                                                                                                           
+npx create-react-app random 
+cd random
+npm start 
+
+
+
+App.js
+
+
+import { useState } from "react";
+function App() {
+  const [n, setN] = useState(0);
+  return (
+    <div style={{ textAlign: "center", marginTop: 50 }}>
+      <h2>{n}</h2>
+      <button onClick={() => setN(Math.floor(Math.random() * 100))}>
+        Generate
+      </button>
+    </div>
+  );
+}
+export default App;
+
+
+-------------------------------------------------------------------------------------------
+2) Develop an Angular app to display Student Marks Table including names, subjects, and marks (15M) 
+ng new student
+cd student
+ng serve 
+
+
+app.component.ts
+
+
+
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  students = [
+    { name: 'Amit', subject: 'Math', marks: 85 },
+    { name: 'Riya', subject: 'Science', marks: 90 },
+  ];
+}
+
+
+
+app.component.html
+
+
+
+<h3 style="text-align:center;">🎓 Student Marks</h3>
+<table border="1" style="width:60%;margin:auto;text-align:center;">
+  <tr>
+    <th>Name</th><th>Subject</th><th>Marks</th>
+  </tr>
+  <tr *ngFor="let s of students">
+    <td>{{s.name}}</td><td>{{s.subject}}</td><td>{{s.marks}}</td>
+  </tr>
+</table>

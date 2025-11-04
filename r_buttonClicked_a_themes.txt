@@ -1,0 +1,59 @@
+Q1.Create a React component that counts and displays how many times a button has been clicked
+
+
+npx create-react-app click-counter
+cd click-counter
+npm start
+
+
+1)App.js
+
+
+import React, { useState } from "react";
+function App() {
+  const [count, setCount] = useState(0);
+return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Button Click Counter</h2>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click Me</button>
+    </div>
+  );
+}
+export default App;
+
+
+
+Q2.Create a Light/Dark Mode Toggle app in Angular that switches between two themes.
+
+ng new themeapp
+cd themeapp
+ng serve
+
+
+1)App.component.ts
+
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  isDark = false;
+    toggleTheme() {
+    this.isDark = !this.isDark;
+    document.body.style.backgroundColor = this.isDark ? 'black' : 'white';
+    document.body.style.color = this.isDark ? 'white' : 'black';
+  }
+}
+
+
+
+2)App.component.html
+<h2>Light / Dark Mode Toggle</h2>
+<button (click)="toggleTheme()">Toggle Theme</button>
+<p>Current Mode: {{ isDark ? 'Dark' : 'Light' }}</p>

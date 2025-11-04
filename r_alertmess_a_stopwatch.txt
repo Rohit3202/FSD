@@ -1,0 +1,49 @@
+1) Write a React app that displays a browser alert message when a button is clicked - 10M
+npx create-react-app alert
+cd alert
+npm start 
+App.js
+function App() {
+  return (
+    <div style={{textAlign : "center" , marginTop : 80 }}>
+    <button onClick={()=> alert("button clicked")}>Click Me </button>
+    </div>
+      );
+}
+export default App;
+
+
+
+2) Build a Timer or Stopwatch app in Angular with Start, Pause, and Reset buttons - 15M
+ng new stopwatch
+cd stopwatch
+ng serve 
+
+
+app.component.ts
+
+
+
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  t = 0; x: any;
+  start() { this.x = setInterval(() => this.t++, 1000); }
+  pause() { clearInterval(this.x); }
+  reset() { this.pause(); this.t = 0; }
+}
+
+
+app.component.html
+
+
+
+<div style="text-align:center;margin-top:30px;">
+  <h3>Timer: {{t}}s</h3>
+  <button (click)="start()">Start</button>
+  <button (click)="pause()">Pause</button>
+  <button (click)="reset()">Reset</button>
+</div>

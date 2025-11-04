@@ -1,0 +1,76 @@
+1) Design a React app that displays the current date and time when a button is clicked -10 M
+
+npx create-react-app time
+cd time
+npm start 
+
+
+App.js
+
+
+
+ import React , {useState} from "react";
+function App() {
+    const[time,setTime] = useState("");
+  return (
+    <div style={{textAlign : "center" , marginTop : 80 }}>
+        <p>{time}</p>
+    <button onClick={()=> setTime(new Date().toLocaleString())}> Show Date and Time </button>
+    </div>
+      );
+}
+export default App;
+
+
+
+------------------------------------------------------------------------------------------------------
+2) Create a Simple News App that displays headlines from a static JSON file- 15 M
+ng new news
+cd news
+ng serve
+
+
+
+src/assets/news.json
+[
+  { "title": "India wins cricket match!" },
+  { "title": "New tech launched by startup." },
+  { "title": "Rain expected this weekend." }
+]
+
+
+ADD in tsconfig.json
+"resolveJsonModule": true
+
+
+
+
+app.component.ts
+
+
+
+import { Component, OnInit } from '@angular/core';
+import newsData from '../assets/news.json';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent implements OnInit {
+  news: any = [];
+  ngOnInit() {
+    this.news = newsData;
+  }
+}
+
+
+
+app.component.html
+
+
+
+<div style="text-align:center;margin-top:30px;">
+  <h3>📰 News Headlines</h3>
+  <ul style="list-style:none;padding:0;">
+    <li *ngFor="let n of news">{{ n.title }}</li>
+  </ul>
+</div>

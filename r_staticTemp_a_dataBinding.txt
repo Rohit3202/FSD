@@ -1,0 +1,58 @@
+Q.1 Create a simple React component that displays a static temperature message (e.g., “It’s 28°C today”). 
+
+
+npx create-react-app temperature-message
+cd temperature-message
+npm start
+
+
+app.js
+
+
+import React from "react";
+function App() {
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Weather Info</h2>
+      <p>It's 28°C today.</p>
+    </div>
+  );
+}
+export default App;
+
+
+
+
+Q.2 Create an Angular App to demonstrate the two way data binding. 
+
+
+ng new two-way-binding
+cd two-way-binding
+ng serve
+
+
+app.component.ts
+
+
+
+
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  name: string = '';
+}
+
+
+app.component.html
+
+
+
+<h2>Two-Way Data Binding Example</h2>
+<input type="text" [(ngModel)]="name" placeholder="Enter your name" />
+<p>Your name is: {{ name }}</p>

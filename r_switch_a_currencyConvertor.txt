@@ -1,0 +1,96 @@
+Q1.Create a React app that switches between light and dark background colors when a button is clicked
+
+
+
+npx create-react-app light-dark-toggle
+cd light-dark-toggle
+npm start
+
+
+1)App.js
+
+
+import React, { useState } from "react";
+function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleMode = () => setDarkMode(!darkMode);
+  const style = {
+    backgroundColor: darkMode ? "black" : "white",
+    color: darkMode ? "white" : "black",
+    height: "100vh",
+    textAlign: "center",
+    paddingTop: "50px"
+  };
+  return (
+    <div style={style}>
+      <h2>{darkMode ? "Dark Mode" : "Light Mode"}</h2>
+      <button onClick={toggleMode}>
+        Switch to {darkMode ? "Light" : "Dark"} Mode
+      </button>
+    </div>
+  );
+}
+export default App;
+
+
+
+Q.2 Design a Currency Converter app in Angular that converts between INR and USD using fixed conversion rates.
+
+
+ ng new converter 
+cd converter
+ ng serve 
+
+
+
+1)App.component.ts
+
+
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+ amount = 0;
+  convertedAmount = 0;
+  rateINRtoUSD = 0.012; 
+  rateUSDtoINR = 83.0;  
+  conversionType = 'INRtoUSD';
+  convert() {
+    const rates: any = {
+      'INRtoUSD': this.rateINRtoUSD,
+      'USDtoINR': this.rateUSDtoINR
+    };
+    this.convertedAmount = this.amount * rates[this.conversionType];
+  }
+  onAmountChange(event: any) {
+    this.amount = event.target.value;
+  }
+  onTypeChange(event: any) {
+    this.conversionType = event.target.value;
+  }
+}
+
+
+
+
+2)App.component.html 
+
+
+
+<h3>Simple Currency Converter</h3>
+<label>Enter Amount:</label>
+<input type="number" (input)="onAmountChange($event)">
+<br><br>
+<select (change)="onTypeChange($event)">
+  <option value="INRtoUSD">INR ➡ USD</option>
+  <option value="USDtoINR">USD ➡ INR</option>
+</select>
+<br><br>
+<button (click)="convert()">Convert</button>
+<p>Converted Amount: {{ convertedAmount }}</p>

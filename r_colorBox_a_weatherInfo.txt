@@ -1,0 +1,79 @@
+1.Build a React app with a colored box that changes to a random color when clicked.
+
+npx create-react-app color_demo
+cd color_demo
+npm start
+
+
+App.js
+
+
+import React, { useState } from 'react';
+function App() {
+  const [color, setColor] = useState('lightblue');
+
+  function changeColor() {
+    const random = '#' + Math.floor(Math.random()*16777215).toString(16);
+    setColor(random);
+  }
+return (
+    <div
+      onClick={changeColor}
+      style={{ width: 200, height: 200, background: color, margin: '50px auto' }}>
+    </div>
+  );
+}
+export default App;
+
+
+
+
+2. Create a Weather Info app showing temperature and weather conditions for different cities using static data.
+
+
+ng new app_demo
+cd app_demo
+ng serve
+
+
+
+app.html
+
+
+
+<h2>Weather Info App</h2>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>City</th>
+    <th>Temperature (°C)</th>
+    <th>Condition</th>
+  </tr>
+  <tr *ngFor="let w of weather">
+    <td>{{ w.city }}</td>
+    <td>{{ w.temp }}</td>
+    <td>{{ w.condition }}</td>
+  </tr>
+</table>
+
+
+
+app.ts
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+@Component({
+  imports:[CommonModule,FormsModule],
+  selector: 'app-root',
+  templateUrl: './app.html'
+})
+export class App {
+  weather = [
+    { city: 'Pune', temp: 28, condition: 'Sunny' },
+    { city: 'Mumbai', temp: 30, condition: 'Humid' },
+    { city: 'Delhi', temp: 25, condition: 'Cloudy' },
+    { city: 'Chennai', temp: 32, condition: 'Hot' }
+  ];
+}

@@ -1,0 +1,69 @@
+Q.1 Write a React app that takes text input from the user and displays the reversed text.  
+
+
+npx create-react-app reverse-text-app
+cd reverse-text-app
+npm start
+
+
+
+App.js:
+
+
+
+import React, {useState} from "react";
+function App () {
+  const [text, setText] = useState ("");
+  return (
+    <div>
+      <h2>Reverse Text App</h2>
+      <input
+        value={text}
+        onChange={(e) => setText (e. target.value)}
+        placeholder="Type something"
+      />
+      <p>Reversed: {text. split (""). reverse (). join ("")} </p>
+    </div>
+  );
+}
+export default App;
+
+
+
+Q.2 Write an Angular program to demonstrate string interpolation by displaying a dynamic message stored in a component class. 
+
+
+ng new string-interpolation
+cd string-interpolation
+ng serve
+
+
+app. component.ts
+
+
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  message: string | null = null;
+
+  showMessage() {
+    this.message = 'Hello! This message is displayed using string interpolation.';
+  }
+}
+
+
+
+app.component.html
+
+
+
+<h2>Click the button to display a message:</h2>
+<button (click)="showMessage()">Show Message</button>
+<p *ngIf="message">{{ message }}</p>
